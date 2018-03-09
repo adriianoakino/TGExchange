@@ -21,6 +21,7 @@ public class SecurityServicesImp implements SecurityServices {
 	@Autowired
 	private UserDetailsService userDetailsService;
 	
+
 	private static final Logger logger = LoggerFactory.getLogger(SecurityServicesImp.class);
 	
 	@Override
