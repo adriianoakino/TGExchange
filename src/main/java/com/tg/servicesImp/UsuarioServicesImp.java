@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.tg.entities.Usuarios;
+import com.tg.dtos.UsuarioDto;
 import com.tg.repository.UsuarioRepository;
 import com.tg.services.UsuarioServices;
 
@@ -19,13 +19,13 @@ public class UsuarioServicesImp implements UsuarioServices{
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	@Override
-	public void save(Usuarios user) {
+	public void save(UsuarioDto user) {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		usuarioRepository.save(user);
 	}
 	
 	@Override
-	public Usuarios findByUsername(String username) {
+	public UsuarioDto findByUsername(String username) {
 		return usuarioRepository.findByUsername(username);
 	}
 

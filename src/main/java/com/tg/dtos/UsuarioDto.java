@@ -1,13 +1,15 @@
 package com.tg.dtos;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 
-public class CadastroUsuarioDto {
+public class UsuarioDto {
 
 	private Long 	id;
 	private String 	name;
@@ -70,6 +72,10 @@ public class CadastroUsuarioDto {
 	}
 	
 	public void setJoinDate(Date joinDate) {
+		Calendar calendar = new GregorianCalendar();
+		Date date = new Date();
+		calendar.setTime(date);
+		joinDate = calendar.getTime();
 		this.joinDate = joinDate;
 	}
 	

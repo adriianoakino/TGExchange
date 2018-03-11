@@ -1,8 +1,6 @@
 package com.tg.entities;
 
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -78,10 +76,6 @@ public class Usuarios {
 	@Temporal(javax.persistence.TemporalType.TIMESTAMP)
 	@Column(name = "DATA_CRIACAO_USUARIO", nullable = false)
 	public Date getJoinDate() {
-		Calendar calendar = new GregorianCalendar();
-		Date date = new Date();
-		calendar.setTime(date);
-		joinDate = calendar.getTime();
 		return joinDate;
 	}
 	

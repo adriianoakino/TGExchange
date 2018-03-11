@@ -3,11 +3,11 @@ package com.tg.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.tg.entities.Usuarios;
+import com.tg.dtos.UsuarioDto;
 
 
 @Repository
-public interface UsuarioRepository  extends JpaRepository<Usuarios, Long> {
+public interface UsuarioRepository  extends JpaRepository<UsuarioDto, Long> {
 
-	Usuarios findByUsername(String username);
+	UsuarioDto findByUsername(String username);
 }
