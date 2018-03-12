@@ -8,9 +8,8 @@ import com.tg.entities.Usuarios;
 import com.tg.repository.UsuarioRepository;
 import com.tg.services.UsuarioServices;
 
-
 @Service
-public class UsuarioServicesImp implements UsuarioServices{
+public class UsuarioServicesImp implements UsuarioServices {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
@@ -28,8 +27,4 @@ public class UsuarioServicesImp implements UsuarioServices{
 	public Usuarios findByUsername(String username) {
 		return usuarioRepository.findByUsername(username);
 	}
-
-
-
-
 }

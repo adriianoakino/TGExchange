@@ -25,7 +25,7 @@ public class Usuarios {
 	private Date	joinDate;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_USUARIO")
 	public Long getId() {
 		return id;
@@ -76,17 +76,21 @@ public class Usuarios {
 	}
 	
 	@Temporal(javax.persistence.TemporalType.TIMESTAMP)
-	@Column(name = "DATA_CRIACAO_USUARIO", nullable = false)
+	@Column(name = "DATA_CRIACAO_USUARIO", nullable = true)
 	public Date getJoinDate() {
 		Calendar calendar = new GregorianCalendar();
 		Date date = new Date();
 		calendar.setTime(date);
-		joinDate = calendar.getTime();
-		return joinDate;
+		if(joinDate == null) {
+			joinDate = calendar.getTime();
+			return joinDate;
+		} else {
+			return joinDate;
+		}
 	}
 	
 	public void setJoinDate(Date joinDate) {
-		this.joinDate = joinDate;
+			this.joinDate = joinDate;		
 	}
 	
 	
