@@ -1,9 +1,9 @@
 package com.tg.services;
 
-import com.tg.dtos.WalletDto;
+import com.tg.entities.Wallets;
 
 public interface WalletService {
 
-	void save(WalletDto walletUsuario);
+	void save(Wallets walletUsuario);
 
 }

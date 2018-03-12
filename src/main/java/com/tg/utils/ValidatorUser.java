@@ -1,6 +1,7 @@
 package com.tg.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
@@ -14,6 +15,7 @@ import com.tg.services.UsuarioServices;
  * se não está duplicando username e password não nulo ou vazio
  */
 
+@Component
 public class ValidatorUser implements Validator {
 
 	@Autowired
@@ -29,10 +31,10 @@ public class ValidatorUser implements Validator {
 		Usuarios users = (Usuarios) obj;
 
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty");
-		if (users.getUsername().equals(null) || users.getUsername() == null|| users.getUsername().length() < 6 || users.getUsername().length() > 32) {
+		if (users.getUsername().equals(null) || users.getUsername() == null|| users.getUsername().length() < 5 || users.getUsername().length() > 32) {
 			errors.rejectValue("username", "Size.registro.username");
 		}
-		if (usuarioService.findByUsername(users.getUsername()) != null) {
+		if (usuarioService.findByUsername(users.getUsername()) != null || ! usuarioService.findByUsername(users.getUsername()).equals(null)) {
 			errors.rejectValue("username", "Duplicate.registro.username");
 		}
 

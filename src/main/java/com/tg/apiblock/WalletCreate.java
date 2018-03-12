@@ -1,7 +1,7 @@
 package com.tg.apiblock;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.tg.dtos.WalletDto;
+import com.tg.entities.Wallets;
 
 public class WalletCreate {
 
@@ -9,7 +9,7 @@ public class WalletCreate {
 	private String status;
 
 	@JsonProperty("data")
-	private WalletDto walletUsuario;
+	private Wallets walletUsuario;
 
 	public Long getId() {
 		return id;
@@ -27,11 +27,11 @@ public class WalletCreate {
 		this.status = status;
 	}
 
-	public WalletDto getWalletUsuario() {
+	public Wallets getWalletUsuario() {
 		return walletUsuario;
 	}
 
-	public void setWalletUsuario(WalletDto walletUsuario) {
+	public void setWalletUsuario(Wallets walletUsuario) {
 		this.walletUsuario = walletUsuario;
 	}
 

@@ -1,10 +1,9 @@
 package com.tg.controllers;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 public class IndexController {
 
 	/**
@@ -16,13 +15,6 @@ public class IndexController {
 		return "index";
 	}
 	
-	/**
-	 * método para abrir página de login pegando os dados do usuário
-	 * @return
-	 */
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login() { 
-		return "login";
-    }
+
 	
 }

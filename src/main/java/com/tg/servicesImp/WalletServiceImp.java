@@ -6,9 +6,8 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tg.dtos.UsuarioDto;
-import com.tg.dtos.WalletDto;
-import com.tg.repository.WalletRepository;
+import com.tg.entities.Usuarios;
+import com.tg.entities.Wallets;
 import com.tg.services.SecurityServices;
 import com.tg.services.UsuarioServices;
 import com.tg.services.WalletService;
@@ -17,7 +16,7 @@ import com.tg.services.WalletService;
 public class WalletServiceImp implements WalletService {
 
 	@Autowired
-	private WalletRepository walletRepository;
+	private WalletService walletService;
 		
 	@Autowired
 	private SecurityServices securityService;
@@ -26,15 +25,15 @@ public class WalletServiceImp implements WalletService {
 	private UsuarioServices usuarioService;
 	
 	@Override
-	public void save(WalletDto walletUsuario) {
+	public void save(Wallets walletUsuario) {
 		
-		Set<UsuarioDto> user = new HashSet<UsuarioDto>();	
+		Set<Usuarios> user = new HashSet<Usuarios>();	
 		
 		usuarioService.findByUsername(securityService.findLoggedInUsername());
 		
 		walletUsuario.setUsuarios(user);
 		
-		walletRepository.save(walletUsuario);
+		walletService.save(walletUsuario);
 		
 	}
 

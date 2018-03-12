@@ -1,6 +1,8 @@
 package com.tg.entities;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,7 +25,7 @@ public class Usuarios {
 	private Date	joinDate;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_USUARIO")
 	public Long getId() {
 		return id;
@@ -74,13 +76,21 @@ public class Usuarios {
 	}
 	
 	@Temporal(javax.persistence.TemporalType.TIMESTAMP)
-	@Column(name = "DATA_CRIACAO_USUARIO", nullable = false)
+	@Column(name = "DATA_CRIACAO_USUARIO", nullable = true)
 	public Date getJoinDate() {
-		return joinDate;
+		Calendar calendar = new GregorianCalendar();
+		Date date = new Date();
+		calendar.setTime(date);
+		if(joinDate == null) {
+			joinDate = calendar.getTime();
+			return joinDate;
+		} else {
+			return joinDate;
+		}
 	}
 	
 	public void setJoinDate(Date joinDate) {
-		this.joinDate = joinDate;
+			this.joinDate = joinDate;		
 	}
 	
 	

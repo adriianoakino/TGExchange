@@ -1,12 +1,11 @@
 package com.tg.services;
 
-import com.tg.dtos.UsuarioDto;
+import com.tg.entities.Usuarios;
 
 public interface UsuarioServices {
+
+	void save(Usuarios user);
 	
-	
-	void save(UsuarioDto user);
-	
-	UsuarioDto findByUsername(String username);
+	Usuarios findByUsername(String username);
 
 }
