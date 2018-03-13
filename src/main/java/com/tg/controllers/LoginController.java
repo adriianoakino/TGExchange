@@ -22,7 +22,8 @@ public class LoginController {
 	 * @return
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login() { 
+    public String login(Model model) { 
+		model.addAttribute("login", new Usuarios());
 		return "login";
     }
 	

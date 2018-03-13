@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+body {
+  background: #4d4d4d; /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, #4d4d4d, #4d4d4d);
+  background: -moz-linear-gradient(right, #4d4d4d, #4d4d4d);
+  background: -o-linear-gradient(right, #4d4d4d, #4d4d4d);
+  background: linear-gradient(to left, #4d4d4d, #4d4d4d);
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;      
+}
+
+/*######## SIDE BAR ######### */
+#sidebar-wrapper {
+	z-index: 1;
+	position: absolute;
+	width: 0;
+	height: 100%;
+	overflow-y: hidden; 
+	background: #FFF;
+	border: 2px solid red;
+	opacity: 0.9;
+}
+
+/*######## MAIN CONTENT ######### */
+#page-content-wrapper{
+	width: 100%;
+	position: absolute;
+	padding: 15px;
+	border: 5px solid green;
+}
+
+/* MUDAR O TAMANHO DO SIDEBAR CLICANDO NO BOTÃO*/
+
+#wrapper.menuDisplayed #page-content-wrapper{
+	width: 250px;
+}
+
+/*######## SIDEBAR STYLING ######### */
+.sidebar-nav{
+	padding: 0;
+	list-style: none;
+}
+.sidebar-nav li {
+	text-indent: 20px;
+	line-height: 40px;
+	
+}
+
+.sidebar-nav li a {
+	display: block;
+	text-decoration: none;
+	color: #000;
+}
+
+.sidebar-nav li a:hover{
+	background: #43A047 ;
+}
