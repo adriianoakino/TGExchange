@@ -10,7 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,7 +25,7 @@ public class Wallets {
 	private Set<Usuarios> usuarios;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_CARTEIRA")
 	public Long getId() {
 		return id;
@@ -71,7 +71,7 @@ public class Wallets {
 		this.label = label;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "USR_CARTEIRA_USUARIOS",
 			joinColumns = { @JoinColumn(name = "ID_CARTEIRA")},
 			inverseJoinColumns = { @JoinColumn (name = "ID_USUARIO") })

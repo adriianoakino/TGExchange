@@ -1,5 +1,6 @@
 package com.tg.entities;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -15,7 +16,12 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "USUARIOS")
-public class Usuarios {
+public class Usuarios implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 597195157010128131L;
 	
 	private Long 	id;
 	private String 	name;
@@ -89,10 +95,10 @@ public class Usuarios {
 		}
 	}
 	
+	
 	public void setJoinDate(Date joinDate) {
 			this.joinDate = joinDate;		
 	}
-	
 	
 
 }

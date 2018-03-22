@@ -1,5 +1,7 @@
 package com.tg.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,9 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
-import com.tg.apiblock.WalletCreate;
 import com.tg.endpoints.Endpoints;
 import com.tg.entities.Wallets;
+import com.tg.services.SecurityServices;
+import com.tg.services.UsuarioServices;
 import com.tg.services.WalletService;
 
 @Controller
@@ -19,11 +22,28 @@ public class WalletController implements Endpoints{
 	@Autowired
 	private WalletService walletService;
 	
+	@Autowired
+	private UsuarioServices usuarioService;
+	
+	@Autowired
+	private SecurityServices securityService;
 	
 	@RequestMapping("/carteira")
 	public String wallet(Model model) {
+		
 		model.addAttribute("wallets", new Wallets());
-		return "painel_walletuser";
+		requestWalletCreated();
+		model.addAttribute("walletsready", requestWalletCreated());
+		return "painel_wallet";
+	}
+	
+	
+	private List<?> requestWalletCreated() {
+		List<Wallets> wall = walletService.findByUsuarios(usuarioService.findByUsername(securityService.findLoggedInUsername()));
+		System.out.println(wall.get(0).getLabel());
+
+		return wall;
+
 	}
 	
 	
@@ -34,10 +54,10 @@ public class WalletController implements Endpoints{
 	 * @return
 	 */
 	
-	@RequestMapping(value="createWallet", method = RequestMethod.POST)
-	private String createWallet(@RequestParam("nameWallet") String nameWallet, @RequestParam("tipoWallet") String tipoMoeda) {
+	@RequestMapping(value="/carteira", method = RequestMethod.POST)
+	private String createWallet(@RequestParam("nomeWallet") String nameWallet, @RequestParam("tipoWallet") String tipoMoeda) {
 		
-		WalletCreate walletCreate = null; 
+		/*WalletCreate walletCreate = null; 
 		RestTemplate restTemplate = new RestTemplate();
 		
 		if(tipoMoeda.equals("ltc")) {
@@ -48,8 +68,14 @@ public class WalletController implements Endpoints{
 			walletCreate = restTemplate.postForObject(BASE + "api/v2/get_new_address/?api_key=" + DOGEKEY + "&label=" + nameWallet, nameWallet, WalletCreate.class, 200);
 		}
 			
+		System.out.println(walletCreate.getWalletUsuario().getAddress());*/
 		
-		walletService.save(walletCreate.getWalletUsuario());
+		Wallets wal = new Wallets();
+		wal.setAddress("teste");
+		wal.setLabel("teste");
+		wal.setNetwork("teste");
+		wal.setUser_id("teste");
+		walletService.save(wal);
 		
         
         return "redirect:/carteira";

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com">
+<head>
+	<meta charset="UTF-8" />
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/painel.css" />
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	
+</head>
+<body>
+	<header>
+		<nav class="menu">
+  			<ul>
+  				<li><a href="#"> HOME </a></li>
+  				<li><a href="#"> CARTEIRA </a></li>
+  				<li><a href="#"> VENDER </a></li>
+  				<li><a href="#"> COMPRAR </a></li>
+  				<li><a href="#"> SOBRE </a></li>
+  			</ul>
+		</nav>
+	</header>	
+	
+ 	<section class="container">
+ 	
+ 	<!-- #################### FORM CREATE WALLET ####################  -->
+ 	
+ 		<div class="d-flex align-items-center">
+ 				<div class="create-wallet-page">
+ 					<div class="form-wallet">
+ 						<form th:action="@{/carteira}" th:object="${wallets}" method="post" class="register-form">
+							<div th:if = "${error != null ? 'has-error' : ''}">
+								<input type="text" 		id="nomeWallet" 	name="nomeWallet" placeholder="Nome Carteira"/>
+      							<select id="tipoWallet" name="tipoWallet">
+  									<option value="btc">Bitcoin</option>
+  									<option value="ltc">Litecoin</option>
+ 									<option value="doge">Dogecoin</option>
+								</select>
+      							<button>Criar</button>
+      						</div>
+						</form>
+ 					</div>
+ 				</div>
+ 		</div>
+ 		
+ 		<!-- #################### FORM WALLETS CREATED ####################  -->
+ 		
+ 		<div class="d-flex align-items-center">
+
+ 				<div class="create-wallet-page">
+ 					<div class="form-wallet">
+ 						<table class="table table-hover">
+  							<thead class="table-dark">
+    							<tr>
+     							 	<th scope="col">#</th>
+     									<th scope="col">Nome</th>
+      									<th scope="col">Tipo</th>
+     									<th scope="col">Endereço</th>
+     									<th scope="col">Editar</th>
+    								</tr>
+  								</thead>
+  								<tbody>
+   									<tr th:each="wallet : ${walletsready}">
+      								<th  scope="row" th:text="${wallet.id}">1</th>
+      									<td th:text="${wallet.label}">Nome</td>
+      									<td th:text="${wallet.network}">Tipo</td>
+      									<td th:text="${wallet.address}">Endereço</td>
+      									<td> edit</td>
+    								</tr>
+    							</tbody>
+    						</table>
+ 					</div>
+ 				</div>
+ 			</div>
+ 			
+ 		
+ 	</section>
+ 	
+</body>
+</html>

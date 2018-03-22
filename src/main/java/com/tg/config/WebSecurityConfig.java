@@ -38,6 +38,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/", "index", "/cadastrar").permitAll()
                     .antMatchers("/css/**").permitAll()
                     .antMatchers("/js/**").permitAll()
+                    .antMatchers("/fonts/*").permitAll()
+                    .antMatchers("/img/**").permitAll()
                     .anyRequest().authenticated()
                     .and()
                     .csrf().disable()
