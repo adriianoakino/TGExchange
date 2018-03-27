@@ -3,11 +3,8 @@ package com.tg.utils;
 import java.util.List;
 
 import org.apache.http.message.BasicNameValuePair;
-import org.springframework.stereotype.Service;
-
 
 public class ParameterCollection {
-
 	private List<BasicNameValuePair> parameters;
 
     public ParameterCollection(List<BasicNameValuePair> parameters) {
