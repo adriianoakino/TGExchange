@@ -95,10 +95,11 @@ public class Usuarios implements Serializable {
 		}
 	}
 	
-	
+
 	public void setJoinDate(Date joinDate) {
 			this.joinDate = joinDate;		
 	}
+	
 	
 
 }

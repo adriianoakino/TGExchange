@@ -21,7 +21,32 @@
   			</ul>
 		</nav>
 	</header>	
-	
+<!-- #################### FORM WALLETS CREATED ####################  -->
+ 		
+ 		<div class="d-flex align-items-center">
+
+ 				<div class="create-wallet-page">
+ 					<div class="form-wallet">
+ 						<table class="table table-hover">
+  							<thead class="table-dark">
+    							<tr>
+     							 	<th scope="col">#</th>
+     									<th scope="col">Nome</th>
+      									<th scope="col">Tipo</th>
+     									<th scope="col">Endereço</th>
+     									<th scope="col">Editar</th>
+    								</tr>
+  								</thead>
+  								<tbody>
+   									<tr th:method="GET" th:each="sellers : ${sellersReady}">
+      								<th  scope="row" th:text="${sellers.pagination.data.ad_list.data.profile.username}">1</th>
+      									
+    								</tr>
+    							</tbody>
+    						</table>
+ 					</div>
+ 				</div>
+ 			</div>
  	
 </body>
 </html>
