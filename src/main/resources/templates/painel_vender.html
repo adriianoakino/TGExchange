@@ -5,6 +5,7 @@
 	<title>Insert title here</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/painel.css" />
+	<link rel="stylesheet" type="text/css" href="css/loginandregistercss.css"></link>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	
@@ -22,31 +23,60 @@
 		</nav>
 	</header>	
 <!-- #################### FORM WALLETS CREATED ####################  -->
- 		
- 		<div class="d-flex align-items-center">
 
- 				<div class="create-wallet-page">
- 					<div class="form-wallet">
- 						<table class="table table-hover">
-  							<thead class="table-dark">
-    							<tr>
-     							 	<th scope="col">#</th>
-     									<th scope="col">Nome</th>
-      									<th scope="col">Tipo</th>
-     									<th scope="col">Endereço</th>
-     									<th scope="col">Editar</th>
-    								</tr>
-  								</thead>
-  								<tbody>
-   									<tr th:method="GET" th:each="sellers : ${sellersReady}">
-      								<th  scope="row" th:text="${sellers.pagination.data.ad_list.data.profile.username}">1</th>
-      									
-    								</tr>
-    							</tbody>
-    						</table>
- 					</div>
- 				</div>
- 			</div>
- 	
+	<div class="d-flex align-items-center">
+
+		<div class="create-wallet-page">
+			<div class="form-wallet">
+				<table class="table table-hover">
+					<thead class="table-dark">
+						<tr>
+							<th scope="col">Nome</th>
+							<th scope="col">Moeda</th>
+							<th scope="col">Minimo</th>
+							<th scope="col">Máximo</th>
+							<th scope="col">USD</th>
+							<th scope="col">Banco</th>
+							<th scope="col">Comprar</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="sellers : ${sellersReady}">
+							<td th:text="${sellers.dataLista.profile.username}">Nome</td>
+							<td th:text="${sellers.dataLista.currency}">Moeda</td>
+							<td th:text="${sellers.dataLista.min_amount}">Minimo</td>
+							<td th:text="${sellers.dataLista.max_amount}">Máximo</td>
+							<td th:text="${sellers.dataLista.temp_price_usd}">USD</td>
+
+							<td th:text="Paypal">Banco</td>
+							<td><button type="submit" data-toggle="modal" data-target="#modal1">Comprar</button></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content modal-popup">
+				<form method="post" class="register-form">
+					<input class ="input" 	type="text" id="quantidadeBTC"  	name="quantidadeBTC" 	placeholder="0.000000" />
+					<input class ="input" 	type="text" id="quantidadeREAL" 	name="quantidadeREAL" 	placeholder="R$ 0.00" />
+					<input class ="input" 	type="text" id="emailPaypal"    	name="emailPaypal" 		placeholder="Email Paypal" />
+					
+					<div class="checkbox-holder text-left">
+						<div class="checkbox">
+							<input type="checkbox" value="None" id="squaredOne" name="check" />
+							<label for="squaredOne"><span>Eu Aceito <strong>os Termos &amp; Condições</strong></span></label>
+						</div>
+					</div>
+					<button type="submit" class="btn btn-submit">Submit</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
 </body>
 </html>

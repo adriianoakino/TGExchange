@@ -1,27 +1,33 @@
 package com.tg.apiblock;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SellersApi {
 	
-	@JsonProperty("profile")
-	@JsonDeserialize
-	private List<SellersProfileApi> sellersProfileApi;
+	@JsonProperty("data")
+	private Data data;
 
-	public List<SellersProfileApi> getSellersProfileApi() {
-		return sellersProfileApi;
+	@JsonProperty("pagination")
+	private Pagination pagination;
+
+	public Pagination getPagination() {
+		return pagination;
 	}
 
-	public void setSellersProfileApi(List<SellersProfileApi> sellersProfileApi) {
-		this.sellersProfileApi = sellersProfileApi;
+	public void setPagination(Pagination pagination) {
+		this.pagination = pagination;
+	}
+	
+	public Data getData() {
+		return data;
 	}
 
-
+	public void setData(Data data) {
+		this.data = data;
+	}
+	
 
 	
 }
