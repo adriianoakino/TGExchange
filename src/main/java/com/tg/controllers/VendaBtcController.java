@@ -46,7 +46,7 @@ public class VendaBtcController implements Endpoints {
     }
 	
 	
-	public void VenderBtc(HttpServletResponse response, Model model) {
+	public void VenderBtc(HttpServletResponse response, String msg, int ammount) {
 		
 		ParameterCollection parameterCollection = new ParameterCollection(new ArrayList<>());
 		parameterCollection.add(new BasicNameValuePair("contacts", "alohadownloads"));
@@ -57,6 +57,11 @@ public class VendaBtcController implements Endpoints {
         response.addHeader("Apiauth-Key", 	AUTH_KEY);
         response.addHeader("Apiauth-Nonce", NONCE);
         response.addHeader("Apiauth-Signature", signature);
-		
+        
+        RestTemplate restTemplate = new RestTemplate();
+        String retun = restTemplate.postForObject(BASE_LoBTC + CONTACTCREATE, ammount ,String.class, 200);
+        
+        System.out.println(retun);
+
 	}
 }

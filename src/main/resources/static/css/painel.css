@@ -2,14 +2,14 @@
 body {
 	margin: 0;
 	padding: 0;
-  background: #e9eaea; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #e9eaea, #e9eaea);
-  background: -moz-linear-gradient(right, #e9eaea, #e9eaea);
-  background: -o-linear-gradient(right, #e9eaea, #e9eaea);
-  background: linear-gradient(to left, #e9eaea, #e9eaea);
-  font-family: "Roboto", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;      
+  	background: #4d4d4d; /* fallback for old browsers */
+  	background: -webkit-linear-gradient(right, #4d4d4d, #4d4d4d);
+  	background: -moz-linear-gradient(right, #4d4d4d, #4d4d4d);
+  	background: -o-linear-gradient(right, #4d4d4d, #4d4d4d);
+  	background: linear-gradient(to left, #4d4d4d, #4d4d4d);
+  	font-family: "Roboto", sans-serif;
+  	-webkit-font-smoothing: antialiased;
+  	-moz-osx-font-smoothing: grayscale;      
 }
 
 
@@ -17,6 +17,8 @@ body {
 
 	padding: 1rem;
 }
+
+/* ########################### FORM ########################### */
 .form {
   position: relative;
   z-index: 1;
@@ -27,7 +29,36 @@ body {
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
+.form-change {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 300px; 
+  margin-right: 1rem;
+  padding: 45px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
 .form-wallet {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 100%;
+  margin-right: 1rem;
+  padding: 45px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.form-trocar {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 100%;
+  padding: 45px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.form-troca {
   position: relative;
   z-index: 1;
   background: #FFFFFF;
@@ -60,17 +91,30 @@ body {
   font-size: 14px;
 }
 
-  .form-wallet input {
+  .form-wallet input, input[type="number"] {
   font-family: "Roboto", sans-serif;
   outline: 0;
   background: #f2f2f2;
-  width: 35%;
+  width: 49%;
   border: 0;
   margin: 0 0 15px;
   padding: 15px;
   box-sizing: border-box;
   font-size: 14px;
  }
+ 
+ input[type="text"] {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+ }
+ 
  
  .form-wallet select, .form-wallet option {
   font-family: "Roboto", sans-serif;
@@ -85,7 +129,7 @@ body {
   cursor: pointer;
  }
  
- .form-wallet button {
+ .form-wallet button, .form-trocar button  {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
@@ -99,6 +143,7 @@ body {
   transition: all 0.3 ease;
   cursor: pointer;
 }
+
 
 .form button {
   font-family: "Roboto", sans-serif;
@@ -115,7 +160,7 @@ body {
   cursor: pointer;
 }
 .form button:hover,.form button:active,.form button:focus,
-.form-wallet button:hover,.form-wallet button:active,.form-wallet button:focus {
+.form-wallet button:hover,.form-wallet button:active,.form-wallet button:focus,.form-trocar button:hover, .form-trocar button:focus {
   background: #43A047;
 }
 .form .message {
@@ -163,10 +208,11 @@ body {
   color: #EF3B3A;
 }
 
+/* ########################### MENU ########################### */
 
 .menu {
 	width: 100%;
-	background: #4d4d4d;
+	background: #e9eaea;
 	font-family: 'Arial';
 	 box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
@@ -210,8 +256,12 @@ body {
   	cursor: pointer;
 }
 
+/* ########################### MODAL ########################### */
 
-/* Popup */
+
+
+/* ########################### MODAL ########################### */
+
 .modal {
 	padding: 0 25px !important;
 }
@@ -321,3 +371,75 @@ body {
 	color: #fff;
 	background: #00a8ff;
 }
+
+/* ########################### GRID ########################### */
+
+.lateral{
+	position: relative;
+	width: 100%;
+  	z-index: 1;
+  	background: #FFFFFF;
+	padding: 5px;
+  	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.area-button-pagamento{
+	position: relative;
+	width: 100%;
+	height: 50px;
+	margin: 2px;
+}
+
+.input {
+	font-family: "Roboto", sans-serif;
+  	outline: 0;
+  	background: #f2f2f2;
+  	width: 100%;
+  	border: 0;
+  	margin: 0 0 15px;
+  	padding: 15px;
+  	box-sizing: border-box;
+  	font-size: 14px;
+}
+
+.icon-pagamento {
+	float: right;
+	width: 30px;
+	height:30px;
+}
+
+.button-pagamento {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4d4d4d;
+  width: 100%;
+  border: 0;
+  padding: 10px;
+  margin-top: 5px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+.button-pagamento:hover{
+	background: #43A047;
+}
+
+.button-pagamento:selection{
+	background: #43A047;
+}
+
+/* ########################### MEDIA QUERY ########################### */
+
+@media (min-width: 576px) {  }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {  }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {  }

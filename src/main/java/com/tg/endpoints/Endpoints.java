@@ -15,6 +15,8 @@ public interface Endpoints {
 	
     public static final String SELLERS		=	"/sell-bitcoins-online/.json";
     public static final String SELLERSPAYPAL=	"/sell-bitcoins-online/paypal/.json";
+    public static final String CONTACT_INFO =	"/api/contact_info/";
+    public static final String CONTACTCREATE=	"/api/contact_create/";
     public static final String PAYMENT		=	"/api/payment_methods/";
     
     public static final String 	METHOD 		= 	"HmacSHA256";

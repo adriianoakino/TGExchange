@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com">
+<head>
+	<meta charset="UTF-8" />
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/painel.css" />
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	
+</head>
+<body>
+	<header>
+		<nav class="menu">
+  			<ul>
+  				<li><a href="#"> HOME </a></li>
+  				<li><a href="#"> CARTEIRA </a></li>
+  				<li><a href="#"> VENDER </a></li>
+  				<li><a href="#"> COMPRAR </a></li>
+  				<li><a href="#"> SOBRE </a></li>
+  			</ul>
+		</nav>
+	</header>	
+	
+ 	<section class="container">
+ 		<div class="row">
+ 				<div class="create-wallet-page">
+ 					<div class="form-wallet">
+ 					</div>
+ 				</div>
+ 		</div>
+ 		
+ 	</section>
+ 	
+ 	<section class="container">
+ 		<div class="row">
+ 				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+ 				
+ 					<div class="lateral">
+ 					<label> Enviar </label>
+ 						<div class="area-button-pagamento" th:each="pagamento : ${listaPagamento}" id="from">
+ 						<button class="button-pagamento" data-shortlink="perfect money" data-ecurr="pm" data-curr="USD">
+                           <span class="checked-icon"><i class="fa fa-check"></i></span>
+                           <img class="icon-pagamento" src="/img/pm.png" alt="Perfect Money" title="Perfect Money" height="30" width="30">
+                           <span th:text="${pagamento}" class="ex-option-right">pagamento</span>
+                       </button>	
+ 					</div>
+ 					</div>
+ 				</div>
+ 				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+ 					<div class="form-trocar">
+ 						<form th:action="@{/carteira}" th:object="${wallets}" method="post" class="register-form">
+							<input class="input" type="number" id="quantidadeBTC"  	name="quantidadeBTC" 	placeholder="0.000000" />
+							<input class="input" type="number" id="quantidadeREAL" 	name="quantidadeREAL" 	placeholder="R$ 0.00" />
+							<input class="input-full" type="text" id="emailPaypal"    	name="emailPaypal" 		placeholder="Email Paypal" />
+							<input class="input-full" type="text" id="emailPaypal"    	name="emailPaypal" 		placeholder="Email Paypal" />
+					
+							<button type="submit" class="btn btn-submit">Submit</button>
+						</form>
+
+ 					</div>
+ 				</div>
+ 				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+ 					<div class="lateral" id="to">
+ 					<label> Receber </label>
+ 						<div class="area-button-pagamento" th:each="pagamento : ${listaPagamento}">
+ 						<button  class="button-pagamento" data-shortlink="perfect money" data-ecurr="pm" data-curr="USD">
+                           <span class="checked-icon"><i class="fa fa-check"></i></span>
+                           <img class="icon-pagamento" src="/img/pm.png" alt="Perfect Money" title="Perfect Money" height="30" width="30">
+                           <span th:text="${pagamento}" class="ex-option-right">pagamento</span>
+                       </button>	
+                       </div>
+ 					</div>
+ 				</div>
+ 			</div>
+ 	</section>
+</body>
+</html>
