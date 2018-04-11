@@ -423,11 +423,7 @@ body {
   cursor: pointer;
 }
 
-.button-pagamento:hover{
-	background: #43A047;
-}
-
-.button-pagamento:selection{
+.button-pagamento:hover, .button-pagamento:focus{
 	background: #43A047;
 }
 

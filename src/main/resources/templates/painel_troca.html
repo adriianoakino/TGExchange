@@ -35,25 +35,27 @@
  	<section class="container">
  		<div class="row">
  				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
- 				
  					<div class="lateral">
  					<label> Enviar </label>
- 						<div class="area-button-pagamento" th:each="pagamento : ${listaPagamento}" id="from">
- 						<button class="button-pagamento" data-shortlink="perfect money" data-ecurr="pm" data-curr="USD">
+ 						<div class="area-button-pagamento" th:each="pagamento,status : ${listaPagamento}" th:for="|pagamento${status.index}|" id="from">
+ 						<button name="buttonSend" th:id="${status.index}" class="button-pagamento" th:data-shortlink="${pagamento.nome}" th:data-ecurr="${pagamento.tipo}"  th:data-curr="${pagamento.currency}"   th:onclick="'javascript:getButtonProperty(\''+ ${status.index} +'\')'">
                            <span class="checked-icon"><i class="fa fa-check"></i></span>
-                           <img class="icon-pagamento" src="/img/pm.png" alt="Perfect Money" title="Perfect Money" height="30" width="30">
-                           <span th:text="${pagamento}" class="ex-option-right">pagamento</span>
+                           <img class="icon-pagamento" th:src="@{/img/} + '' + ${pagamento.tipo} +''+.png" th:alt="${pagamento.nome}" th:title="${pagamento.nome}" height="30" width="30">
+                           <span th:text="${pagamento.nome}" class="ex-option-right">pagamento</span>
                        </button>	
  					</div>
- 					</div>
+ 					</div> 					
  				</div>
+ 				
+ 				
+ 				
  				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
  					<div class="form-trocar">
- 						<form th:action="@{/carteira}" th:object="${wallets}" method="post" class="register-form">
-							<input class="input" type="number" id="quantidadeBTC"  	name="quantidadeBTC" 	placeholder="0.000000" />
-							<input class="input" type="number" id="quantidadeREAL" 	name="quantidadeREAL" 	placeholder="R$ 0.00" />
-							<input class="input-full" type="text" id="emailPaypal"    	name="emailPaypal" 		placeholder="Email Paypal" />
-							<input class="input-full" type="text" id="emailPaypal"    	name="emailPaypal" 		placeholder="Email Paypal" />
+ 						<form  method="post" class="register-form">
+							<input class="input" 		type="number" 	id="quantidadeBTC"  	name="quantidadeBTC" 	placeholder="0.000000" />
+							<input class="input" 		type="number" 	id="quantidadeREAL" 	name="quantidadeREAL" 	placeholder="R$ 0.00" />
+							<input class="input-full" 	type="text" 	id="emailPaypal"    	name="emailPaypal" 		placeholder="Email Paypal" />
+							<input class="input-full" 	type="text" 	id="emailPaypal"    	name="emailPaypal" 		placeholder="Email Paypal" />
 					
 							<button type="submit" class="btn btn-submit">Submit</button>
 						</form>
@@ -63,16 +65,18 @@
  				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
  					<div class="lateral" id="to">
  					<label> Receber </label>
- 						<div class="area-button-pagamento" th:each="pagamento : ${listaPagamento}">
- 						<button  class="button-pagamento" data-shortlink="perfect money" data-ecurr="pm" data-curr="USD">
+ 						<div class="area-button-pagamento" th:each="pagamento,status : ${listaPagamento}" th:for="|pagamento${status.index}|" id="to">
+ 						<button  name="buttonRecive" th:id="${status.index}" class="button-pagamento" th:data-shortlink="${pagamento.nome}" th:data-ecurr="${pagamento.tipo}" th:data-curr="${pagamento.currency}" th:onclick="'javascript:getButtonProperty(\''+ ${status.index} +'\')'">
                            <span class="checked-icon"><i class="fa fa-check"></i></span>
-                           <img class="icon-pagamento" src="/img/pm.png" alt="Perfect Money" title="Perfect Money" height="30" width="30">
-                           <span th:text="${pagamento}" class="ex-option-right">pagamento</span>
+                           <img class="icon-pagamento" th:src="@{/img/} + '' + ${pagamento.tipo} +''+.png" alt="Perfect Money" title="Perfect Money" height="30" width="30">
+                           <span th:text="${pagamento.nome}" class="ex-option-right">pagamento</span>
                        </button>	
                        </div>
  					</div>
  				</div>
  			</div>
  	</section>
+ 	
+ 	<script src="js/painel.js"></script>
 </body>
 </html>
