@@ -7,12 +7,15 @@ public interface Endpoints {
 	public static final String 	LTCKEY  	= 	"1e97-3956-9aaf-cc56";
 	public static final String 	DOGEKEY 	= 	"baaa-0cf8-46e3-8316";
 	
-	//
 	public static final String 	BASE_LoBTC 	= 	"https://localbitcoins.com";
 	public static final String  APIENDPOINT	= 	"/api/notifications/";
 	public static final String 	SECRET_KEY	=   "a29215a68a97052ba9edca120a05059320a72195a73196ccf82ccd1b0c01b5cc";
     public static final String 	AUTH_KEY 	=	"883531de1e1d8e41f253c4a1f4f821ad";
-	
+    
+    public static final String 	BASE_CHANGER= 	"https://www.changer.com";
+	public static final String 	API_SECURITY=   "6f719d68b9a9830b4f07ddaa1e12bfbba307f8fcffdf0030c1774a940e214c3e";
+    public static final String 	API_KEY 	=	"08f3aee7-6008-4075-941a-653f8980887a";
+    
     public static final String SELLERS		=	"/sell-bitcoins-online/.json";
     public static final String SELLERSPAYPAL=	"/sell-bitcoins-online/paypal/.json";
     public static final String CONTACT_INFO =	"/api/contact_info/";
