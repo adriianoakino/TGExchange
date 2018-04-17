@@ -427,6 +427,22 @@ body {
 	background: #43A047;
 }
 
+/* ########################### FOOTER ########################### */
+
+footer{
+	width: 100%;
+	margin-top: 15px;
+	background: #FFF;	
+}
+
+.footer-area {
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+  padding: 45px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
 /* ########################### MEDIA QUERY ########################### */
 
 @media (min-width: 576px) {  }

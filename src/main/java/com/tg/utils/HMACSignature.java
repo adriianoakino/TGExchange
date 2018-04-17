@@ -18,9 +18,6 @@ import java.util.Map;
 
 public class HMACSignature implements Endpoints {
 
-	
-	
-
 	private final String nonce = String.valueOf(System.currentTimeMillis());
     private final String message;
 
@@ -32,7 +29,7 @@ public class HMACSignature implements Endpoints {
     	//this.message = path + converter(params) + this.nonce;
     	this.message = path + ""
     			+ ":param0=max.seexy%40hotmail.com&param1=pm_USD&param2=bitcoin_BTC&param3=10.3&param4=3QdatXeBguSo3pAwZQZ3hVE7MpNV3a7tr2:" + this.nonce + ":" + API_SECURITY;
-    	System.out.println(message);
+
     }
     
     public String converter(Map<String, String> params) throws UnsupportedEncodingException {
