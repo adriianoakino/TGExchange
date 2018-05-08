@@ -29,3 +29,4 @@ function liberar(e, tipo){
 		}
 	}
 }
+

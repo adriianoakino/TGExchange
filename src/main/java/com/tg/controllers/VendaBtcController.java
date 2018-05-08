@@ -45,8 +45,8 @@ public class VendaBtcController implements Endpoints {
         
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-        SellersApi sell = restTemplate.getForObject(BASE_LoBTC+SELLERSPAYPAL,SellersApi.class);
-        
+        //SellersApi sell = restTemplate.getForObject(BASE_LoBTC+SELLERSPAYPAL,SellersApi.class);
+        SellersApi sell = restTemplate.getForObject(BASE_LoBTC+BRAZILPAYPAL,SellersApi.class);
         String teste = restTemplate.getForObject(BASE_LoBTC+BRAZILPAYPAL, String.class);
         
         System.out.println(teste);
@@ -59,18 +59,16 @@ public class VendaBtcController implements Endpoints {
 	public void VenderBtc(HttpServletResponse response, String msg, int amount) throws UnsupportedEncodingException {
 		
 		ParameterCollection parameterCollection = new ParameterCollection(new ArrayList<>());
-		parameterCollection.add(new BasicNameValuePair("amount", "100"));
-		parameterCollection.add(new BasicNameValuePair("msg", "100"));
+		parameterCollection.add(new BasicNameValuePair("amount", "50"));
+		parameterCollection.add(new BasicNameValuePair("msg", "oi"));
 		
-		String signature = new AssinaturaHMAC(CONTACTCREATE, parameterCollection).toString();
+		String signature = new AssinaturaHMAC(BASE_LoBTC + CONTACTCREATE , parameterCollection).toString();
 		
 		response.addHeader("Content-Type", 	"application/x-www-form-urlencoded");
         response.addHeader("Apiauth-Key", 	AUTH_KEY);
         response.addHeader("Apiauth-Nonce", NONCE);
         response.addHeader("Apiauth-Signature", signature);
-        
-        UrlEncodedFormEntity form = new UrlEncodedFormEntity(parameterCollection.getParameters(), "UTF-8");
-       
+            
         
         VenderSend vender = new VenderSend();
         vender.setAmount(amount);
@@ -79,7 +77,7 @@ public class VendaBtcController implements Endpoints {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
         restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
-        ResponseEntity<String> retun = restTemplate.postForEntity(BASE_LoBTC + CONTACTCREATE + "535394", vender, String.class ,200);
+        ResponseEntity<String> retun = restTemplate.postForEntity(BASE_LoBTC + CONTACTCREATE + "702305", vender, String.class ,200);
 
         System.out.println(retun);
 

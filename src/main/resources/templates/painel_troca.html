@@ -1,78 +1,208 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.com">
 <head>
-	<meta charset="UTF-8" />
-	<title>Insert title here</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="css/painel.css" />
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<title>Sistema AUREA - Trocas</title>
+	
+ 	<!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
 	
 </head>
 <body>
-	<header>
-		<nav class="menu">
-  			<ul>
-  				<li><a href="#"> HOME </a></li>
-  				<li><a href="#"> CARTEIRA </a></li>
-  				<li><a href="#"> VENDER </a></li>
-  				<li><a href="#"> COMPRAR </a></li>
-  				<li><a href="#"> SOBRE </a></li>
-  			</ul>
-		</nav>
-	</header>	
- 	
- 	<section class="container">
- 		<div class="row">
- 				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
- 					<div class="lateral">
- 					<label> Enviar </label>
- 						<div  class="area-button-pagamento" th:each="pagamento,status : ${listaPagamento}" th:for="|pagamento${status.index}|" id="from">
- 						<button name="buttonSend" th:id="${status.index}" class="button-pagamento" th:data-shortlink="${pagamento.nome}" th:data-ecurr="${pagamento.tipo}"  th:data-curr="${pagamento.currency}"   th:onclick="'javascript:liberar(\''+ ${status.index} + '\',\''+ send+'\')'">
-                           <span class="checked-icon"><i class="fa fa-check"></i></span>
-                           <img class="icon-pagamento" th:src="@{/img/} + '' + ${pagamento.tipo} +''+.png" th:alt="${pagamento.nome}" th:title="${pagamento.nome}" height="30" width="30">
-                           <span th:text="${pagamento.nome}" class="ex-option-right">pagamento</span>
-                       </button>	
- 					</div>
- 					</div> 					
- 				</div>
- 				
- 				
- 				
- 				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
- 					<div class="form-trocar">
- 						<form  class="register-form">
-							<input class="input" 		type="number" 	id="quantidadeBTC"  	name="quantidadeBTC" 	placeholder="0.000000" >
-							<input class="input" 		type="number" 	id="quantidadeREAL" 	name="quantidadeREAL" 	placeholder="R$ 0.00" />
-							<input class="input-full" 	type="text" 	id="emailorwallet"    	name="emailorwallet" 	placeholder="" />
-							<input class="input-full" 	type="text" 	id="email"    			name="email" 			placeholder="" />
+	<div class="wrapper">
+            <!-- Sidebar Holder -->
+            <nav id="sidebar">
+                <div class="sidebar-header">
+                    <h4>Bem Vindo</h4>
+		            <h6>Usuario</h6>
+                </div>
+
+                <ul class="list-unstyled components">
+                    <p class="text-center">Sistema Aurea</p>
+                    <li class="active">
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li><a href="">Home 1</a></li>
+                            <li><a href="#">Home 2</a></li>
+                            <li><a href="#">Home 3</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="trocar">Trocas</a>
+                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu">
+                            <li><a href="#">Page 1</a></li>
+                            <li><a href="#">Page 2</a></li>
+                            <li><a href="#">Page 3</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="vender">Vender</a>
+                    </li>
+                    <li>
+                        <a href="vender">Comprar</a>
+                    </li>
+                </ul>
+
+                <ul class="list-unstyled components">
+                    <p class="text-center">Social</p>
+                </ul>
+            </nav>
+
+            <!-- Page Content Holder -->
+            <div id="content">
+
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+
+                        <div class="navbar-header">
+                            <button type="button" id="sidebarCollapse" class="navbar-btn">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                        </div>
+
+                        <div class="navbar-header">
+                            <ul class="nav navbar- justify-content-end">
+                               <li><i class="fas fa-bell fa-2x"></i></li>
+                                <div class="line-nav"></div>
+                                <li><i class="fas fa-comments fa-2x"></i></li>
+                                <div class="line-nav"></div>
+                                <li><i class="fas fa-power-off fa-2x"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>	
+		
+				<section>
+					<div class="card-deck">
+	  			        <div class="card">
+	    				    <div class="card-body">
+	                            <h5 class="card-title text-center">Enviar</h5>
+	                            <div class="line"></div>
+	                            
+	                            <button name="enviarAdvcash" type="submit" class="btn btn-primary btn-lg btn-block" data-ecurr="advcash" data-curr="USD" onclick="liberar(advcash);">
+                           			<span class="checked-icon"></span>
+                           			<img class="icon-pagamento" src="img/advcash.png" height="30px" width="30px">
+                           			<span class="ex-option-right">pagamento</span>
+                       			</button>
+                       			
+                       			<button name="enviarBitcoin" type="button" class="btn btn-primary btn-lg btn-block">
+                           			<span class="checked-icon"></span>
+                           			<img class="icon-pagamento" src="img/payeer.png" height="30px" width="30px">
+                           			<span class="ex-option-right">pagamento</span>
+                       			</button>
+	                            
+	      					   	<button name="enviarBitcoin" type="button" class="btn btn-primary btn-lg btn-block">
+                           			<span class="checked-icon"></span>
+                           			<img class="icon-pagamento" src="img/bitcoin.png" height="30px" width="30px">
+                           			<span class="ex-option-right">pagamento</span>
+                       			</button>	
+                       			
+                       			<button name="enviarLitcoin" type="button" class="btn btn-primary btn-lg btn-block">
+                           			<span class="checked-icon"></span>
+                           			<img class="icon-pagamento" src="img/litecoin.png" height="30px" width="30px">
+                           			<span class="ex-option-right">pagamento</span>
+                       			</button>
+                       			
+                       			<button name="enviarDogecoin" type="button" class="btn btn-primary btn-lg btn-block">
+                           			<span class="checked-icon"></span>
+                           			<img class="icon-pagamento" src="img/dogecoin.png" height="30px" width="30px">
+                           			<span class="ex-option-right">pagamento</span>
+                       			</button>	
+                       			<button name="enviarEthereum" type="button" class="btn btn-primary btn-lg btn-block">
+                           			<span class="checked-icon"></span>
+                           			<img class="icon-pagamento" src="img/ethereum.png" height="30px" width="30px">
+                           			<span class="ex-option-right">pagamento</span>
+                       			</button>	
+                       				
+	    				    </div>
+	                    </div>
+	                    
+	  			        <div class="card">
+	    				    <div class="card-body">
+	                            <h5 class="card-title text-center">Dados</h5>
+	                            <div class="line"></div>
+	      					    <form  class="form-group">
+	      					    	<label for="exampleFormControlSelect2">Example multiple select</label>
+									<input class="form-control" 		type="number" 	id="quantidadeBTC"  	name="quantidadeBTC" 	placeholder="0.000000" >
+									<input class="form-control" 		type="number" 	id="quantidadeREAL" 	name="quantidadeREAL" 	placeholder="R$ 0.00" />
+									<input class="form-control" 		type="text" 	id="emailorwallet"    	name="emailorwallet" 	placeholder="" />
+									<input class="form-control" 		type="text" 	id="email"    			name="email" 			placeholder="" />
 					
-							<button type="submit" class="btn btn-submit">Submit</button>
-						</form>
+									<button type="submit" class="btn btn-primary btn-lg btn-block">Realizar Troca</button>
+								</form>
+	    				    </div>
+	  			        </div>
+	  			        <div class="card">
+	    				    <div class="card-body">
+	                      
+	                            <h5 class="card-title text-center">Receber</h5>
+	                            <div class="line"></div>
+	                            
+	                             <button name="enviarBitcoin" type="button" class="btn btn-primary btn-lg btn-block">
+                           			<span class="checked-icon"></span>
+                           			<img class="icon-pagamento" src="img/advcash.png" height="30px" width="30px">
+                           			<span class="ex-option-right">pagamento</span>
+                       			</button>
+                       			
+                       			<button name="enviarBitcoin" type="button" class="btn btn-primary btn-lg btn-block">
+                           			<span class="checked-icon"></span>
+                           			<img class="icon-pagamento" src="img/payeer.png" height="30px" width="30px">
+                           			<span class="ex-option-right">pagamento</span>
+                       			</button>
+	                            
+	      					   <button name="enviarBitcoin" type="button" class="btn btn-primary btn-lg btn-block">
+                           			<span class="checked-icon"></span>
+                           			<img class="icon-pagamento" src="img/bitcoin.png" height="30px" width="30px">
+                           			<span class="ex-option-right">pagamento</span>
+                       			</button>	
+                       			
+                       			<button name="enviarLitcoin" type="button" class="btn btn-primary btn-lg btn-block">
+                           			<span class="checked-icon"></span>
+                           			<img class="icon-pagamento" src="img/litecoin.png" height="30px" width="30px">
+                           			<span class="ex-option-right">pagamento</span>
+                       			</button>
+                       			
+                       			<button name="enviarDogecoin" type="button" class="btn btn-primary btn-lg btn-block">
+                           			<span class="checked-icon"></span>
+                           			<img class="icon-pagamento" src="img/dogecoin.png" height="30px" width="30px">
+                           			<span class="ex-option-right">pagamento</span>
+                       			</button>	
+                       			<button name="enviarEthereum" type="button" class="btn btn-primary btn-lg btn-block">
+                           			<span class="checked-icon"></span>
+                           			<img class="icon-pagamento" src="img/ethereum.png" height="30px" width="30px">
+                           			<span class="ex-option-right">pagamento</span>
+                       			</button>	
+	   				        </div>
+	  			        </div>
+	
+	                </div>        
+				</section>
+		        
+            </div>
+		</div>
+        <!-- jQuery CDN -->
+        <!-- Bootstrap Js CDN -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+		<script src="js/painel.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#sidebarCollapse').on('click', function () {
+                    $('#sidebar').toggleClass('active');
+                    $(this).toggleClass('active');
+                });
+            });
+        </script>
 
- 					</div>
- 				</div>
- 				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
- 					<div class="lateral" id="to">
- 					<label> Receber </label>
- 						<div class="area-button-pagamento" th:each="pagamento,status : ${listaPagamento}" th:for="|pagamento${status.index}|" id="to">
- 						<button  name="buttonRecive" th:id="${status.index}" class="button-pagamento" th:data-shortlink="${pagamento.nome}" th:data-ecurr="${pagamento.tipo}" th:data-curr="${pagamento.currency}" th:onclick="'javascript:liberar(\''+ ${status.index} + '\',\''+ recive+'\')'">
-                           <span class="checked-icon"><i class="fa fa-check"></i></span>
-                           <img class="icon-pagamento" th:src="@{/img/} + '' + ${pagamento.tipo} +''+.png" alt="Perfect Money" title="Perfect Money" height="30" width="30">
-                           <span th:text="${pagamento.nome}" class="ex-option-right">pagamento</span>
-                       </button>	
-                       </div>
- 					</div>
- 				</div>
- 			</div>
- 	</section>
- 	<footer>
- 		<div class="footer-area">
-
- 				
- 		</div>
-
- 	</footer>
- 	<script src="js/painel.js"></script>
 </body>
 </html>

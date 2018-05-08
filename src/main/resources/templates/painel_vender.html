@@ -1,82 +1,185 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.com">
 <head>
-	<meta charset="UTF-8" />
-	<title>Insert title here</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="css/painel.css" />
-	<link rel="stylesheet" type="text/css" href="css/loginandregistercss.css"></link>
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<title>Sistema AUREA - Vendas</title>
+	
+ 	<!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
 	
 </head>
 <body>
-	<header>
-		<nav class="menu">
-  			<ul>
-  				<li><a href="#"> HOME </a></li>
-  				<li><a href="#"> CARTEIRA </a></li>
-  				<li><a href="#"> VENDER </a></li>
-  				<li><a href="#"> COMPRAR </a></li>
-  				<li><a href="#"> SOBRE </a></li>
-  			</ul>
-		</nav>
-	</header>	
-<!-- #################### FORM WALLETS CREATED ####################  -->
+	<div class="wrapper">
+            <!-- Sidebar Holder -->
+            <nav id="sidebar">
+                <div class="sidebar-header">
+                    <h4>Bem Vindo</h4>
+		            <h6>Usuario</h6>
+                </div>
 
-	<div class="d-flex align-items-center">
+                <ul class="list-unstyled components">
+                    <p class="text-center">Sistema Aurea</p>
+                    <li class="active">
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li><a href="">Home 1</a></li>
+                            <li><a href="#">Home 2</a></li>
+                            <li><a href="#">Home 3</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="trocar">Trocar</a>
+                        
+                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu">
+                            <li><a href="#">Page 1</a></li>
+                            <li><a href="#">Page 2</a></li>
+                            <li><a href="#">Page 3</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="vender">Vender</a>
+                    </li>
+                    <li>
+                        <a href="vender">Comprar</a>
+                    </li>
+                </ul>
 
-		<div class="create-wallet-page">
-			<div class="form-wallet">
-				<table class="table table-hover">
-					<thead class="table-dark">
-						<tr>
-							<th scope="col">Nome</th>
-							<th scope="col">Moeda</th>
-							<th scope="col">Minimo</th>
-							<th scope="col">Máximo</th>
-							<th scope="col">USD</th>
-							<th scope="col">Banco</th>
-							<th scope="col">Comprar</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="sellers : ${sellersReady}">
-							<td th:text="${sellers.dataLista.profile.username}">Nome</td>
-							<td th:text="${sellers.dataLista.currency}">Moeda</td>
-							<td th:text="${sellers.dataLista.min_amount}">Minimo</td>
-							<td th:text="${sellers.dataLista.max_amount}">Máximo</td>
-							<td th:text="${sellers.dataLista.temp_price_usd}">USD</td>
+                <ul class="list-unstyled components">
+                    <p class="text-center">Social</p>
+                </ul>
+            </nav>
 
-							<td th:text="Paypal">Banco</td>
-							<td><button type="submit" data-toggle="modal" data-target="#modal1">Comprar</button></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+            <!-- Page Content Holder -->
+            <div id="content">
+
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+
+                        <div class="navbar-header">
+                            <button type="button" id="sidebarCollapse" class="navbar-btn">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                        </div>
+
+                        <div class="navbar-header">
+                            <ul class="nav navbar- justify-content-end">
+                               <li><i class="fas fa-bell fa-2x"></i></li>
+                                <div class="line-nav"></div>
+                                <li><i class="fas fa-comments fa-2x"></i></li>
+                                <div class="line-nav"></div>
+                                <li><i class="fas fa-power-off fa-2x"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>	
+		
+		        <div class="card">
+			        <div class="card-title">
+				        <h2 class="text-center">Paypal</h2>
+			        </div>
+  			        <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div id="create-table-page">
+                                <div class="table-responsive-sm">
+                                    <table class="table table-hover">
+                                        <thead class="cor-principal text-white font-principal">
+                                            <tr>
+                                                <th scope="col">Nome</th>
+                                                <th scope="col">Moeda</th>
+                                                <th scope="col">Mínimo</th>
+                                                <th scope="col">Máximo</th>
+                                                <th scope="col">USD</th>
+                                                <th scope="col">Banco</th>
+                                                <th scope="col">Comprar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                             <tr th:each="sellers : ${sellersReady}">
+                                                <td th:text="${sellers.dataLista.profile.username}">Nome</td>
+                                                <td th:text="${sellers.dataLista.currency}">Moeda</td>
+                                                <td th:text="${sellers.dataLista.min_amount}">Minimo</td>
+                                                <td th:text="${sellers.dataLista.max_amount}">Máximo</td>
+                                                <td th:text="${sellers.dataLista.temp_price_usd}">USD</td>
+                            
+                                                <td th:text="Paypal">Banco</td>
+                                                <td><button type="submit" class="btn btn-primary btn-md btn-block" data-toggle="modal" data-target="#modal1">Comprar</button></td>
+                                            </tr>
+                                        </tbody>
+                                       </table>
+                                 </div>
+                            </div>
+                        </div>
+  			        </div>
+		        </div>
+
+
+		        <div class="line"></div>
+
+                <div class="card">
+			        <div class="card-title">
+				        <h2 class="text-center">Outros Métodos</h2>
+			        </div>
+  			        <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div id="create-table-page">
+                                <div class="table-responsive-sm">
+                                    <table class="table table-hover">
+                                        <thead class="cor-principal text-white">
+                                            <tr>
+                                                <th scope="col">Nome</th>
+                                                <th scope="col">Moeda</th>
+                                                <th scope="col">Mínimo</th>
+                                                <th scope="col">Máximo</th>
+                                                <th scope="col">USD</th>
+                                                <th scope="col">Banco</th>
+                                                <th scope="col">Comprar</th>
+                                            </tr>
+                                        </thead>
+                                         <tbody>
+                                                <tr th:each="sellers : ${sellersReady}">
+                                                <td th:text="${sellers.dataLista.profile.username}">Nome</td>
+                                                <td th:text="${sellers.dataLista.currency}">Moeda</td>
+                                                <td th:text="${sellers.dataLista.min_amount}">Minimo</td>
+                                                <td th:text="${sellers.dataLista.max_amount}">Máximo</td>
+                                                <td th:text="${sellers.dataLista.temp_price_usd}">USD</td>
+                                    
+                                                <td th:text="Paypal">Banco</td>
+                                                <td><button type="submit" class="btn btn-primary btn-md btn-block" data-toggle="modal" data-target="#modal1">Comprar</button></td>
+                                             </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+  			        </div>
+		        </div>
+
+            </div>
 		</div>
-	</div>
+        <!-- jQuery CDN -->
+        <!-- Bootstrap Js CDN -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+    	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#sidebarCollapse').on('click', function () {
+                    $('#sidebar').toggleClass('active');
+                    $(this).toggleClass('active');
+                });
+            });
+        </script>
 
-	<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content modal-popup">
-				<form method="post" class="register-form">
-					<input class ="input" 	type="text" id="quantidadeBTC"  	name="quantidadeBTC" 	placeholder="0.000000" />
-					<input class ="input" 	type="text" id="quantidadeREAL" 	name="quantidadeREAL" 	placeholder="R$ 0.00" />
-					<input class ="input" 	type="text" id="emailPaypal"    	name="emailPaypal" 		placeholder="Email Paypal" />
-					
-					<div class="checkbox-holder text-left">
-						<div class="checkbox">
-							<input type="checkbox" value="None" id="squaredOne" name="check" />
-							<label for="squaredOne"><span>Eu Aceito <strong>os Termos &amp; Condições</strong></span></label>
-						</div>
-					</div>
-					<button type="submit" class="btn btn-submit">Submit</button>
-				</form>
-			</div>
-		</div>
-	</div>
 
 </body>
 </html>
