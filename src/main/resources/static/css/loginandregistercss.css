@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
 .login-page {
   width: 360px;
@@ -18,7 +18,7 @@
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 .form input {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Poppins', sans-serif;
   outline: 0;
   background: #f2f2f2;
   width: 100%;
@@ -29,10 +29,10 @@
   font-size: 14px;
 }
 .form button {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Poppins', sans-serif;
   text-transform: uppercase;
   outline: 0;
-  background: #4d4d4d;
+  background: #4682B4;
   width: 100%;
   border: 0;
   padding: 15px;
@@ -43,7 +43,7 @@
   cursor: pointer;
 }
 .form button:hover,.form button:active,.form button:focus {
-  background: #43A047;
+  background: #0000FF ;
 }
 .form .message {
   margin: 15px 0 0;
@@ -91,12 +91,8 @@
   color: #EF3B3A;
 }
 body {
-  background: #4d4d4d; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #4d4d4d, #4d4d4d);
-  background: -moz-linear-gradient(right, #4d4d4d, #4d4d4d);
-  background: -o-linear-gradient(right, #4d4d4d, #4d4d4d);
-  background: linear-gradient(to left, #4d4d4d, #4d4d4d);
-  font-family: "Roboto", sans-serif;
+  font-family: 'Poppins', sans-serif;
+   background: linear-gradient(rgb(15, 98, 189) 1000%, rgb(10, 64, 122) 1000%);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
 }

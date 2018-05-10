@@ -73,7 +73,7 @@ public class Wallets {
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "USR_CARTEIRA_USUARIOS",
-			joinColumns = { @JoinColumn(name = "ID_CARTEIRA")},
+			joinColumns = { @JoinColumn(name = "ID_CARTEIRA" )},
 			inverseJoinColumns = { @JoinColumn (name = "ID_USUARIO") })
 	public Set<Usuarios> getUsuarios() {
 		return usuarios;
