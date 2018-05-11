@@ -42,7 +42,7 @@ public class LoginController {
 		Usuarios users = usuarioServices.findByUsername(user.getUsername());
 		
 		if(user.getUsername().equals(users.getUsername()) && user.getPassword().equals(user.getPassword())) {
-			return "redirect:/painel_homeuser";
+			return "redirect:/painel_home";
 		}else {
 			return "login";
 		}	
